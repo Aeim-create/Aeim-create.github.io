@@ -1,0 +1,24 @@
+body{
+    background :url('../img/pink.jpg');
+    color: red;
+}
+table{
+    border-collapse: collapse;
+    width: 80%;
+    color: black;
+}
+th,
+td{
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even){
+    background-color: #ffffff;
+
+}
+tr:nth-child(odd){
+    background-color: #00f7ff;
+}
+.total{
+    font-weight: bold;
+}
