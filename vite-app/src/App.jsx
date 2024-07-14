@@ -26,7 +26,7 @@ function App() {
     <div className='flex'>
       <h1 style={{ textAlign: 'center' }}>Vat Calculator</h1>
       <div>
-        <div className='inputDiv'>
+        <div className='inputSpace'>
           <label htmlFor='price'>Price:</label>
           <input
             className='inputField'
@@ -36,7 +36,7 @@ function App() {
             onChange={handlePriceChange}
           />
         </div>
-        <div className='inputDiv'>
+        <div className='inputSpace'>
           <label htmlFor='discount'>Discount:</label>
           <input
             className='inputField'
