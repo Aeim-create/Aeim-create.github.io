@@ -1,0 +1,29 @@
+.flex {
+  padding: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  background-color: rgb(107, 220, 240);
+  color: rgb(0, 0, 0);
+  border-radius: 20px;
+}
+
+.inputSpace {
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #f133db;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5em;
+}
+
+.inputField {
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
