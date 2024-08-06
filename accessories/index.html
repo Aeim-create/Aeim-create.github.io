@@ -3,68 +3,62 @@
 <html>
 
 <head>
-    <title>Car Accessories</title>
-    <link rel="stylesheet" href="../style/style.css" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous"></script>
-        <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-        crossorigin="anonymous"
-      ></script>
+  <title>Car Accessories</title>
+  <link rel="stylesheet" href="../style/style.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
 
-    <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
-        crossorigin="anonymous"
-    />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
 
-    <script>
-      var quoationData = []
+  <script>
+    var quoationData = []
 
-function addItem() {
-  var accessory = $('#accessory').val()
-  var amount = $('#amount').val()
+    function addItem() {
+      var accessory = $('#accessory').val()
+      var amount = $('#amount').val()
 
-  quoationData.push({
-    accessory: accessory,
-    amount: Number.parseFloat(amount),
-  })
-  $('#accessoryModal').modal('hide')
-  renderTable()
-}
-function calculatePrice(accessory) {
-  switch (accessory) {
-    case 'carCover':
-      return 50
-    case 'seatCovers':
-      return 30
-    case 'floorMats':
-      return 20
-    default:
-      return 0
-  }
-}
+      quoationData.push({
+        accessory: accessory,
+        amount: Number.parseFloat(amount),
+      })
+      $('#accessoryModal').modal('hide')
+      renderTable()
+    }
+    
+    function calculatePrice(accessory) {
+      switch (accessory) {
+        case 'carCover':
+          return 50
+        case 'seatCovers':
+          return 30
+        case 'floorMats':
+          return 20
+        default:
+          return 0
+      }
+    }
 
-function renderTable() {
-  var data = quoationData
-  var subTotal = 0
-  data.forEach((e) => {
-    subTotal = subTotal + calculatePrice(e.accessory) * e.amount
-  })
-  var vat = (subTotal * 0.07).toFixed(2)
-  var total = subTotal * 1.07
+    function renderTable() {
+      var data = quoationData
+      var subTotal = 0
+      data.forEach((e) => {
+        subTotal = subTotal + calculatePrice(e.accessory) * e.amount
+      })
+      var vat = (subTotal * 0.07).toFixed(2)
+      var total = subTotal * 1.07
 
-  console.log('subTotal', subTotal)
-  $('#subTotal').html('' + subTotal)
-  $('#vat').html('' + vat)
-  $('#total').html('' + total)
+      console.log('subTotal', subTotal)
+      $('#subTotal').html('' + subTotal)
+      $('#vat').html('' + vat)
+      $('#total').html('' + total)
 
-  var dataRows = data.map((e, i) => {
-    let price = e.amount * calculatePrice(e.accessory)
-    return `<tr class="data-row">
+      var dataRows = data.map((e, i) => {
+        let price = e.amount * calculatePrice(e.accessory)
+        return `<tr class="data-row">
                       <td class="text-center">${e.accessory}</td>
                       <td class="text-center">${e.amount}</td>
                       <td class="text-center">
@@ -73,27 +67,27 @@ function renderTable() {
                       </td>
 
                   </tr>`
-  })
+      })
 
-  $('.data-row').remove()
+      $('.data-row').remove()
 
-  // Insert into the table
-  dataRows.forEach((r) => {
-    $('#accessoryTable tbody').before(r)
-  })
-}
+      // Insert into the table
+      dataRows.forEach((r) => {
+        $('#accessoryTable tbody').before(r)
+      })
+    }
 
-function deleteItem(i) {
-  quoationData.splice(i, 1)
-  renderTable()
-}
-    </script>
+    function deleteItem(i) {
+      quoationData.splice(i, 1)
+      renderTable()
+    }
+  </script>
 </head>
 
 <body>
-    <h1>Car Accessories</h1>
+  <h1>Car Accessories</h1>
 
-        <!-- <label for="accessory">Select an accessory</label>
+  <!-- <label for="accessory">Select an accessory</label>
         <select id="accessory" name="accessory">
             <option value="carCover">Car Cover</option>
             <option value="seatCover">Seat Cover</option>
@@ -101,98 +95,75 @@ function deleteItem(i) {
         </select>
         <label for="amount">Amount:</label>
         <input type="number" id="amount" name="amount" min="1" value="1" /> -->
-        <button type=" button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Add Item
-         </button>
+  <button type=" button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Add Item
+  </button>
 
 
 
-    
-    <h2>Product List</h2>
 
-    <table id="accessoryTable">
-        <thead>
+  <h2>Product List</h2>
+
+  <table id="accessoryTable">
+    <thead>
+      <tr>
+        <th>Accessory</th>
+        <th>Amount</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <p class="total">
+    Gross Price: $<span id="subTotal">0</span> <br />
+    VAT: $<span id="vat"></span>
+    <br />
+    Total Price: $<span id="total"></span>
+  </p>
+
+  <!-- Modal -->
+  <div style="color: black" class="modal fade" id="exampleModal" tabind ex="-1" role="dialog"
+    aria-labelledby="accessoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="accessoryModalLabel">Add Item</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
             <tr>
-                <th>Accessory</th>
-                <th>Amount</th>
-                <th>Price</th>
+              <td>Accessories:</td>
+              <td>
+                <select id="accessory" name="accessory" class="form-select" style="width: 185px; height: 30px">
+                  <option value="carCover">Car Cover</option>
+                  <option value="seatCovers">Seat Covers</option>
+                  <option value="floorMats">Floor Mats</option>
+                </select>
+              </td>
             </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-
-    <p class="total">
-        Gross Price: $<span id="subTotal">0</span> <br />
-        VAT: $<span id="vat"></span>
-        <br />
-        Total Price: $<span id="total"></span>
-      </p>
-
-        <!-- Modal -->
-        <div
-        style="color: black"
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="accessoryModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="accessoryModalLabel">Add Item</h2>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <tr>
-                  <td>Accessories:</td>
-                  <td>
-                    <select
-                      id="accessory"
-                      name="accessory"
-                      class="form-select"
-                      style="width: 185px; height: 30px"
-                    >
-                      <option value="carCover">Car Cover</option>
-                      <option value="seatCovers">Seat Covers</option>
-                      <option value="floorMats">Floor Mats</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Amount:</td>
-                  <td><input type="number" min="0" id="amount" /></td>
-                </tr>
-              </table>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary" onclick="addItem()">
-                Add New Item
-              </button>
-            </div>
-          </div>
+            <tr>
+              <td>Amount:</td>
+              <td><input type="number" min="0" id="amount" /></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" onclick="addItem()">
+            Add New Item
+          </button>
         </div>
       </div>
-  
+    </div>
+  </div>
+
 </body>
 
 </html>
-
-
